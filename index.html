@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Register Galaxy Fixed</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, #ff6ec4, #7873f5);
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      width: 850px;
+      height: 550px;
+      margin: auto;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #fff;
+      border-radius: 30px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .form-box {
+      position: absolute;
+      width: 50%;
+      height: 100%;
+      padding: 40px;
+      background: #fff;
+      color: #333;
+      transition: 0.6s ease-in-out;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .form-box.login { left: 0; }
+    .form-box.register { left: 100%; opacity: 0; visibility: hidden; }
+
+    .container.active .form-box.login {
+      left: -100%;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .container.active .form-box.register {
+      left: 0;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .form-box h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .input-box {
+      position: relative;
+      width: 100%;
+      margin: 20px 0;
+    }
+
+    .input-box input {
+      width: 100%;
+      padding: 12px 40px 12px 15px;
+      border: none;
+      background: #f0f0f0;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .input-box i {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+      font-size: 18px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 25px;
+      background: #ff6ec4;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #e254ad;
+    }
+
+    .social-icons {
+      margin-top: 15px;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      margin: 0 5px;
+      color: #ff6ec4;
+      font-size: 20px;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #333;
+    }
+
+    .toggle-box {
+      position: absolute;
+      width: 50%;
+      height: 100%;
+      right: 0;
+      top: 0;
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    .toggle-panel {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #ff6ec4, #7873f5);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      text-align: center;
+      transition: all 0.6s ease-in-out;
+    }
+
+    .toggle-panel h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .toggle-panel p {
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    .toggle-panel .btn {
+      background: transparent;
+      border: 2px solid #fff;
+      padding: 10px 20px;
+      width: auto;
+    }
+
+    .toggle-left {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+
+    .toggle-right {
+      transform: translateX(0%);
+      opacity: 1;
+    }
+
+    .container.active .toggle-left {
+      transform: translateX(0%);
+      opacity: 1;
+    }
+
+    .container.active .toggle-right {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div id="particles-js"></div>
+
+<div class="container" id="container">
+  <!-- Login -->
+  <div class="form-box login">
+    <form>
+      <h1>Login</h1>
+      <div class="input-box">
+        <input type="text" placeholder="Username" required />
+        <i class="bx bxs-user"></i>
+      </div>
+      <div class="input-box">
+        <input type="password" placeholder="Password" required />
+        <i class="bx bxs-lock-alt"></i>
+      </div>
+      <div class="forgot-link">
+        <a href="#">Forgot password?</a>
+      </div>
+      <button type="submit" class="btn">Login</button>
+      <p>or login with social platforms</p>
+      <div class="social-icons">
+        <a href="#"><i class="bx bxl-google"></i></a>
+        <a href="#"><i class="bx bxl-facebook"></i></a>
+        <a href="#"><i class="bx bxl-github"></i></a>
+        <a href="#"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </form>
+  </div>
+
+  <!-- Register -->
+  <div class="form-box register">
+    <form>
+      <h1>Register</h1>
+      <div class="input-box">
+        <input type="text" placeholder="Username" required />
+        <i class="bx bxs-user"></i>
+      </div>
+      <div class="input-box">
+        <input type="email" placeholder="Email" required />
+        <i class="bx bxs-envelope"></i>
+      </div>
+      <div class="input-box">
+        <input type="password" placeholder="Password" required />
+        <i class="bx bxs-lock-alt"></i>
+      </div>
+      <button class="btn">Register</button>
+      <p>or register with social platforms</p>
+      <div class="social-icons">
+        <a href="#"><i class="bx bxl-google"></i></a>
+        <a href="#"><i class="bx bxl-facebook"></i></a>
+        <a href="#"><i class="bx bxl-github"></i></a>
+        <a href="#"><i class="bx bxl-linkedin"></i></a>
+         <a href="#"><i class="bx bxl-gmail"></i></a>
+          <a href="#"><i class="bx bxl-tiktok"></i></a>
+           <a href="#"><i class="bx bxl-instagram"></i></a>
+            <a href="#"><i class="bx bxl-yahoo"></i></a>
+      </div>
+    </form>
+  </div>
+
+  <!-- Toggle Panels -->
+  <div class="toggle-box">
+    <div class="toggle-panel toggle-left">
+      <h1>Welcome Back!</h1>
+      <p>Already have an account?</p>
+      <button class="btn login-btn">Login</button>
+    </div>
+    <div class="toggle-panel toggle-right">
+      <h1>Hello, Star!</h1>
+      <p>Don't have an account?</p>
+      <button class="btn register-btn">Register</button>
+    </div>
+  </div>
+</div>
+
+<!-- Particles JS -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<script>
+  const container = document.getElementById('container');
+  document.querySelector('.register-btn').addEventListener('click', () => {
+    container.classList.add('active');
+  });
+  document.querySelector('.login-btn').addEventListener('click', () => {
+    container.classList.remove('active');
+  });
+
+  particlesJS("particles-js", {
+    particles: {
+      number: { value: 60, density: { enable: true, value_area: 800 } },
+      color: { value: "#ffffff" },
+      shape: { type: "circle" },
+      opacity: { value: 0.3 },
+      size: { value: 3 },
+      line_linked: {
+        enable: true,
+        distance: 120,
+        color: "#ffffff",
+        opacity: 0.2,
+        width: 1
+      },
+      move: { enable: true, speed: 1.2 }
+    },
+    interactivity: {
+      detect_on: "canvas",
+      events: {
+        onhover: { enable: true, mode: "grab" },
+        onclick: { enable: true, mode: "push" }
+      },
+      modes: {
+        grab: { distance: 140, line_linked: { opacity: 0.5 } },
+        push: { particles_nb: 4 }
+      }
+    },
+    retina_detect: true
+  });
+</script>
+
+</body>
+</html>
